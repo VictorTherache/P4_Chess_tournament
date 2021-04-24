@@ -4,6 +4,7 @@ sys.path.append("..")
 from Views.PlayerView import PlayerView
 from Views.TournamentView import TournamentView
 from Models.PlayerModel import PlayerModel
+
 class PlayerController(object):
     """
     Player's controller : Gets the data from the model and shows

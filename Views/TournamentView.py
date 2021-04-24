@@ -4,8 +4,8 @@ class TournamentView(object):
         """
         Contains the view of a new tournament
         """
-        print("Bienvenue sur ChessTournament, le logiciel"
-                "pour créer et gérer ses tournois d'échecs."
+        print("Bienvenue sur ChessTournament, le logiciel "
+                "pour créer et gérer ses tournois d'échecs. "
                 "Voulez-vous créer un nouveau tournoi ? o/n")
         # pass
 
@@ -13,7 +13,7 @@ class TournamentView(object):
         """
         View to add player to the tournament
         """
-        print("Veuillez ajouter 8 joueurs au tournoi"
+        print("Veuillez ajouter 8 joueurs au tournoi. "
                 "Voulez vous ajouter un joueur déjà existant (1) "
                 "ou en créer un nouveau (2) ?")
 
