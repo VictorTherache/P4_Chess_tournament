@@ -1,4 +1,8 @@
 class TournamentModel(object):
+    """
+    Tournament model, create, read, update or delete data from the tournament
+    table
+    """
     def __init__(self):
         """
         Constructor of the class

@@ -1,5 +1,8 @@
 class MatchModel(PlayerModel):
-
+    """
+    Match model, create, read, update or delete data from the match
+    table
+    """
     def __init__(self):
         """
         Constructor of the class
