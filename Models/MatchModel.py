@@ -1,4 +1,6 @@
-class MatchModel(PlayerModel):
+from tinydb import TinyDB, Query
+
+class Match(object):
     """
     Match model, create, read, update or delete data from the match
     table
@@ -7,35 +9,15 @@ class MatchModel(PlayerModel):
         """
         Constructor of the class
         """
-        pass
+        self.db = TinyDB('../Models/db.json')
+        self.first_round = self.db.table('first_round')
+        self.query = Query()
 
-    def get_match_id(self):
+    def get_first_round(self):
         """
-        Returns the match id
+        Return each matchs of the first round
         """
-        pass
+        return self.first_round.iter()
+    
 
 
-    def get_players_pair(self, id):
-        """
-        Returns a pair of player
-        """
-        pass
-
-    def set_players_pair(self, id):
-        """
-        Set the players in pair
-        """
-        pass
-
-    def get_match_score(self, id):
-        """
-        Retuns the match score result
-        """
-        pass
-
-    def set_match_score(self, id):
-        """
-        Retuns the match score result
-        """
-        pass
