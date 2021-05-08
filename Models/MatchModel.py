@@ -9,7 +9,7 @@ class Match(object):
         """
         Constructor of the class
         """
-        self.db = TinyDB('../Models/db.json')
+        self.db = TinyDB('Models/db.json')
         self.first_round = self.db.table('first_round')
         self.query = Query()
 

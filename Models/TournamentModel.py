@@ -12,17 +12,17 @@ class Tournament(object):
         Constructor of the class
         """
         self.tournament_views = TournamentView
-        self.db = TinyDB('../Models/db.json')
+        self.db = TinyDB('Models/db.json')
         self.query = Query()
         self.player_table = self.db.table('player_table')
-        # self.name = name 
-        # self.place = place 
-        # self.date = date 
-        # self.nbr_of_rounds = 4
-        # self.rounds = rounds
-        # self.players = players
-        # self.time_control = time_control
-        # self.description = description
+        self.name = "" 
+        self.place = "" 
+        self.date = "" 
+        self.nbr_of_rounds = 4
+        self.rounds = ()
+        self.players = []
+        self.time_control = ""
+        self.description = ""
 
 
     def players_list(self):

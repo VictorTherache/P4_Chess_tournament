@@ -11,9 +11,7 @@ class TournamentView(object):
         """
         Contains the view of a new tournament
         """
-        print("Bienvenue sur ChessTournament, le logiciel "
-                "pour créer et gérer ses tournois d'échecs. "
-                " Veuillez ajouter huit joueurs au tournoi\n")
+        print("Veuillez ajouter huit joueurs au tournoi\n")
 
 
     def add_player(self, nbr_players):
@@ -27,27 +25,13 @@ class TournamentView(object):
 
     def show_players_list(self, player_table):
         """
-        Contains the view of a new tournament
+        Show each player in a single row
         """
         i = 1
         for players in player_table:
             print(f"{players['first_name']} {players['last_name']} {str(i)}") 
             i+= 1
 
-
-    def add_player_to_tournament_and_db(self):
-        """
-        View to get players info to add them in the db
-        """
-        self.players_info = []
-        first_name = input("Entrez le prénom du joueur :")
-        last_name = input("Entrez le nom du joueur :")
-        age = input("Entrez l'âge du joueur :")
-        gender = input("Entrez le sexe du joueur (m/f) :")
-        rank = input("Entrez le rang du joueur :")
-        self.players_info.extend([first_name, last_name, age,
-                                 gender, rank])
-        return self.players_info
 
 
     def player_already_added(self):
@@ -68,3 +52,31 @@ class TournamentView(object):
             else:
                 print(f"{i}ème du tournoi : {players[0]['first_name']} {players[0]['last_name']}")
             i+=1
+
+    
+    def user_choice(self):
+        print("\nQue voulez vous faire ?\nTapez 1 pour créer un nouveau tournoi"
+                "\nTapez 2 pour afficher un rapport")
+        
+    def wrong_answer(self):
+        print("\nVeuillez taper un autre chiffre")
+
+    def ask_which_report(self):
+        print("\n Quel rapport voulez-vous ? :\n"
+                "\nTapez 1 pour un rapport sur les joueurs"
+                "\nTapez 2 pour un rapport sur tout les joueurs d'un tournoi"
+                "\nTapez 3 pour un rapport sur les tournois")
+
+
+    def invalide_name(self):
+        print("\nVeuillez rentrer un nom et un prénom valide (sans numéros"
+                "ou caractères spéciaux)")
+
+    def invalide_date_of_birth(self):
+        print("\nVeuillez rentrer une date de naissance valide dd/mm/YYYY")
+
+    def invalide_gender(self):
+        print("\nVeuillez rentrer un sexe valide (m/f)")
+
+    def invalide_rank(self):
+        print("\nVeuillez rentrer un rang valide")

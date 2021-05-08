@@ -20,3 +20,4 @@ class MatchView(object):
     def update_score_other_rounds(self, match):
         print(f"Match entre {match[0][0]['first_name']} {match[0][0]['last_name']}"
               f" et {match[1][0]['first_name']} {match[1][0]['last_name']}\n")    
+

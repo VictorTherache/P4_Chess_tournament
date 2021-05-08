@@ -6,13 +6,17 @@ class RoundModel(object):
     Round model, create, read, update or delete data from the round
     table
     """
-    def __init__(self):
+    def __init__(self, name, starting_time, end_time, match_list):
         """
         Constructor of the class
         """
-        self.db = TinyDB('../Models/db.json')
-        self.first_round = self.db.table('first_round')
-        self.query = Query()
+        # self.db = TinyDB('../Models/db.json')
+        # self.first_round = self.db.table('first_round')
+        # self.query = Query()
+        self.name = name
+        self.starting_time = starting_time
+        self.end_time = end_time
+        self.match_list = match_list
 
     def get_matches_list(self):
         """
