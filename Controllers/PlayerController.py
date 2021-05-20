@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-
+import sys, os
 from Views.PlayerView import PlayerView
 from Models.PlayerModel import Player
 # from Controllers.TournamentController import TournamentController
@@ -44,7 +44,7 @@ class PlayerController(object):
         the player to select
         """
         self.player_views.show_players_list(player_table)
-        player_choice = input("Quels joueurs voulez vous ajouter ? :")
+        player_choice = input("\nQuel joueur voulez vous ajouter ? :")
         player_chosen = player_table.all()[int(player_choice) - 1]
         if player_chosen not in self.tournament_players:
             return self.tournament_players.append(player_table.all()[int(player_choice) - 1])
@@ -65,32 +65,54 @@ class PlayerController(object):
     #         self.tournament_players.append(player_created)
 
         
-    def show_player_report(self):
-        self.player_views.ask_for_player_sort()
+    # def show_player_report(self):
+    #     """
+    #     """
+    #     self.player_views.ask_for_player_sort()
         # choice = input()
         # if int(choice) == 1:
         #     pass
 
     def ask_sort_player_by_what(self):
-        choice = input("\nTapez 1 pour classer les joueurs par ordre alphabétique"
-                        "\nTapez 2 pour classer les joueurs pas classement")
+        """
+        Asks the user how to sort the players
+        """
+        os.system('cls')
+        choice = input("\n1 : Classer les joueurs par ordre alphabétique"
+                        "\n2 : Classer les joueurs par rang")
+        os.system('cls')
         if int(choice) == 1:
             self.sort_players_by_alphabetical_order()
         if int(choice) == 2:
             self.sort_player_by_ranking()
+        input("\nAppuyer sur entrée pour continuer")
     
 
     def sort_player_by_ranking(self):
+        """
+        Sort a players list by ranking
+        """
         player_list = Player.player_list()
         player_list = player_list.all()
         sorted_list = sorted(player_list, key=lambda k: k['rank'], reverse=True) 
-        self.player_views.show_list_players_by_rank(sorted_list)      
+        for players in sorted_list:
+            self.player_views.show_list_players_by_rank(players['first_name'],
+                                                        players['last_name'],
+                                                        players['rank']
+                                                        )     
     
     
     def sort_players_by_alphabetical_order(self):
+        """
+        Sort a players list by alphabetical order
+        """
         player_list = Player.player_list()
         player_list = player_list.all()
         sorted_list = sorted(player_list, key=lambda k: k['last_name']) 
-        self.player_views.show_list_players(sorted_list)
+        self.player_views.liste_player_alpha()
+        for players in sorted_list:
+            self.player_views.show_list_players(players['first_name'],
+                                                players['last_name'])
+
 
 

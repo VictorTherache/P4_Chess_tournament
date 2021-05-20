@@ -1,5 +1,6 @@
 from tinydb import TinyDB, Query
 import sys
+from tinydb.operations import delete
 
 class Player(object):
     """
@@ -30,6 +31,7 @@ class Player(object):
                 }
         return serialize_player
     
+    
     @classmethod
     def player_list(self):
         """
@@ -57,4 +59,24 @@ class Player(object):
         if (self.player_table.search(self.query.last_name == self.last_name)
             and self.player_table.search(self.query.first_name == self.first_name)):
             return True
+
+    @classmethod
+    def get_players_by_index(self, players_index_list):
+        self.db = TinyDB('Models/db.json')
+        self.player_table = self.db.table('player_table')
+        self.query = Query()
+        player_list = []
+        for index in players_index_list:
+            player = self.player_table.get(doc_id=index)
+            player_list.append(player)
+        return player_list
+
+    
+    @classmethod
+    def update_player_rank(self, player_id, new_rank):
+        self.db = TinyDB('Models/db.json')
+        self.player_table = self.db.table('player_table')
+        self.query = Query() 
+        # player = self.player_table.get(doc_id=player_id)
+        self.player_table.update({'rank' : new_rank}, doc_ids=[player_id])
 

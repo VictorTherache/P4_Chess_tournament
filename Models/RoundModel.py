@@ -24,22 +24,20 @@ class RoundModel(object):
         """
         pass
 
-    def save_round_in_db(self, pair_of_player):
+    @classmethod
+    def save_round_in_db(self, serialized_round, tournament_id):
         """
         saves a list of players pairs in db
         """
-        # self.first_round.insert({"p1_first_name": pair_of_player[0]["first_name"],
-        #                         "p1_last_name": pair_of_player[0]["last_name"]},
-        #                         {"p2_first_name": 'charlie'})
-
-                                #   "p1_last_name": pair_of_player[0]["last_name"],
-                                #   "p1_result": ""},
-                                # {"p2_first_name": pair_of_player[1]["first_name"],
-                                #   "p2_last_name": pair_of_player[1]["last_name"],
-                                #   "p2_result": ""})
-
-        # self.player_table.insert({'first_name': players_info[0], 
-        #                   'last_name': players_info[1], 
-        #                   'age': players_info[2], 
-        #                   'gender': players_info[3], 
-        #                   'rank': players_info[4]})
+        rounds_list =[]
+        self.db = TinyDB('Models/db.json')
+        self.query = Query()
+        self.tournament_table = self.db.table('tournament_table')
+        tournament = self.tournament_table.get(doc_id=tournament_id)
+        if (tournament['rounds'] == 'rounds'):
+            rounds_list.append(serialized_round)
+            self.tournament_table.update({'rounds': rounds_list}, doc_ids=[tournament_id])
+        else:
+            rounds_list = tournament['rounds']
+            rounds_list.append(serialized_round)
+            self.tournament_table.update({'rounds': rounds_list}, doc_ids=[tournament_id])

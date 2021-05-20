@@ -1,3 +1,4 @@
+import os
 import sys
 sys.path.append("..")
 
@@ -24,8 +25,9 @@ class MatchController(object):
         self.match_views.update_score(match)
         score_p1 = input(f"Veuillez rentrer le score de {match[0][0]['first_name']} {match[0][0]['last_name']} (1/0.5/0) ")
         score_p2 = input(f"Veuillez rentrer le score de {match[1][0]['first_name']} {match[1][0]['last_name']} (1/0.5/0) ")
-        new_score = float(match[0][i]) + float(score_p1)
-        new_score2 = float(match[1][i]) + float(score_p2) 
+        self.validate_score(score_p1, score_p2, match, i)
+        new_score = float(score_p1)
+        new_score2 = float(score_p2) 
         return new_score, new_score2
 
 
@@ -36,6 +38,38 @@ class MatchController(object):
         """
         self.match_views.update_score(match)
 
+
+    def validate_score(self, score1, score2, match, i):
+        print(float(score1))
+        if (float(score1) != 1.0 and
+            float(score1) != 0.0 and
+            float(score1) != 0.5):
+            os.system('cls')
+            self.match_views.invalide_score()
+            input("Appuyer sur entrée pour continuer")
+            self.update_score(match, i)
+        if (float(score2) != 1.0 and
+            float(score2) != 0.0 and
+            float(score2) != 0.5):
+            os.system('cls')
+            self.match_views.invalide_score()
+            input("Appuyer sur entrée pour continuer")
+            self.update_score(match, i)
+        if (float(score1) == 1.0 and float(score2) != 0):
+            os.system('cls')
+            self.match_views.error_two_winners()
+            input("Appuyer sur entrée pour continuer")
+            self.update_score(match, i)
+        if (float(score1) == 0.0 and float(score2) != 1.0):
+            os.system('cls')
+            self.match_views.error_two_loosers()
+            input("Appuyer sur entrée pour continuer")
+            self.update_score(match, i)
+        if (float(score1) == 0.5 and float(score2) != 0.5):
+            os.system('cls')
+            self.match_views.error_two_draw()
+            input("Appuyer sur entrée pour continuer")
+            self.update_score(match, i)
 
     # def add_score_to_first_rounds_match(self):
     #     """
