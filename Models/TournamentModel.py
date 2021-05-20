@@ -103,12 +103,12 @@ class Tournament(object):
         self.query = Query()
         tournament = self.tournament_table.get(self.query.name == tournament[0])
         return tournament.doc_id
-    
+
     @classmethod
     def get_players_index_from_db(self, tournament_id):
         self.db = TinyDB('Models/db.json')
         self.tournament_table = self.db.table('tournament_table')
         self.query = Query()
-        tournament = self.tournament_table.get(doc_id=tournament_id)
+        tournament = self.tournament_table.get(doc_id=int(tournament_id))
         return tournament['player']
 

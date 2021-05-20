@@ -80,8 +80,8 @@ class TournamentController(object):
         """
         Ask the users to add players to the tournament
         """
-        os.system('cls')
         while len(self.tournament_players) != 8:
+            os.system('cls')
             nbr_players_in_tournament = len(self.tournament_players)
             self.tournament_view.add_player(nbr_players_in_tournament)
             choice = input()
@@ -259,11 +259,11 @@ class TournamentController(object):
         View to get players info to add them in the db
         """
         self.players_info = []
-        first_name = input("Entrez le prénom du joueur :")
-        last_name = input("Entrez le nom du joueur :")
-        age = input("Entrez l'âge du joueur :")
-        gender = input("Entrez le sexe du joueur (m/f) :")
-        rank = input("Entrez le rang du joueur :")
+        first_name = input("Prénom du joueur :")
+        last_name = input("Nom du joueur :")
+        age = input("Date de naissance du joueur :")
+        gender = input("Sexe du joueur (m/f) :")
+        rank = input("Rang du joueur :")
         self.players_info.extend([first_name, last_name, age,
                                   gender, rank])
         return self.players_info
@@ -280,7 +280,9 @@ class TournamentController(object):
             self.tournament_players,
             4, self.tournament_id)
         self.end_tournament(match_list)
-        self.update_players_rank(tournament_id)
+        input("Appuyez sur entrée pour continuer")
+        os.system('cls')
+        self.update_players_rank(self.tournament_id)
         self.start_program()
 
     def update_players_rank(self, tournament_id):
@@ -452,7 +454,10 @@ class TournamentController(object):
             return True
 
     def validate_gender(self, gender):
-        if not((gender == "m") or (gender == "f")):
+        if not((gender == "m") 
+            or (gender == "f")
+            or (gender == "M")
+            or (gender == "F") ):
             self.tournament_view.invalide_gender()
         else:
             return True

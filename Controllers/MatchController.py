@@ -3,7 +3,6 @@ import sys
 sys.path.append("..")
 
 from Views import MatchView
-# from Models import MatchModel
 
 class MatchController(object):
     """

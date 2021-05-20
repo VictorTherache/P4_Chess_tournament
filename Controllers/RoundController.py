@@ -132,6 +132,7 @@ class RoundController(object):
         round_index+=1
         return serialiazed_round  
 
+
     def update_instance(self):
         """
         Update the round instance
@@ -154,6 +155,7 @@ class RoundController(object):
         now = datetime.now()
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
         self.time_rounds[self.round_number -1].append(dt_string)
+
 
     def load_match(self, tournament, current_id):
         """
@@ -182,7 +184,6 @@ class RoundController(object):
         ranking = self.generate_matches_other_rounds()
         return ranking
 
-                # i+=1
   
     def generate_matches_other_rounds(self):
         """
