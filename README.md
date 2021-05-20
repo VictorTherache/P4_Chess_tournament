@@ -6,7 +6,7 @@
 
 ### Information générale
 ***
-Ce programme permet de gérer des tournois d'échecs de 8 joueurs, création des tournois, sauvegarde, chargement et génération de rapports sur ceux-ci
+Ce programme permet de gérer des tournois d'échecs de 8 joueurs, création des tournois, sauvegarde, chargement et génération de rapports sur les joueurs, les tournois, les rounds et les matchs.
 ### Screenshot
 ![Image text](https://i.ibb.co/LC80vpd/banniere-op.png)
 ## Technologies
