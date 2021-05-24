@@ -14,7 +14,7 @@ Ce programme permet de gérer des tournois d'échecs de 8 joueurs, création des
 Technologie utilisé :
 * [Python 64bit](https://www.python.org/downloads/release/python-391/): Version 3.9.1
 * [tinydb](https://tinydb.readthedocs.io/en/latest/index.html)
-* flake8-html(https://pypi.org/project/flake8-html/)
+* [flake8-html](https://pypi.org/project/flake8-html/)
 
 
 ## Installation
