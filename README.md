@@ -24,13 +24,25 @@ Sur Windows :
 $ git clone https://github.com/VictorTherache/P4_chess_tournament.git
 $ cd P4_chess_tournament
 $ pip3 install -r requirements.txt 
+$ cd Chess_tournament
 $ py main.py
 ```
 ```
 Sur Linux/Mac : 
 $ git clone https://github.com/VictorTherache/P4_chess_tournament.git
 $ cd P4_chess_tournament
+$ cd Chess_tournament
 $ pip3 install -r requirements.txt 
+$ cd Chess_tournament
 $ python main.py
 ```
+## Créer un rapport flake8
+***
+Pour créer un rapport flake8, tapez la commande ci-dessous dans le dossier P4_chess_tournament:
+```
+$ flake8 Chess_tournament --format=html --htmldir=flake-report --max-line-lengt=119
+```
+***
+[Remarque] : flake8 va générer le warning suivant :  invalid escape sequence à cause du texte ASCII contenu dans le fichier Tournamentview.
+***
 Merci d'avoir téléchargé ce projet :) 
