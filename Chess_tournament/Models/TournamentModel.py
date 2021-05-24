@@ -1,9 +1,8 @@
-from abc import abstractproperty
 from tinydb import TinyDB, Query
-import sys
 
 from tinydb.queries import where
 from Views import TournamentView
+
 
 class Tournament(object):
     """
@@ -35,15 +34,12 @@ class Tournament(object):
         player_table = self.db.table('player_table')
         return player_table
 
-    
     @classmethod
     def save_tournament(self, tournament):
         self.db = TinyDB('Models/db.json')
         self.query = Query()
         self.tournament_table = self.db.table('tournament_table')
-        
         self.tournament_table.insert(tournament)
-    
 
     @classmethod
     def get_current_instance(self):
@@ -51,14 +47,13 @@ class Tournament(object):
         self.query = Query()
         self.tournament_table = self.db.table('tournament_table')
         return self.tournament_table.all()[-1]
-        
+
     @classmethod
     def update_players(self, players_index, name):
         self.db = TinyDB('Models/db.json')
         self.query = Query()
-        self.tournament_table = self.db.table('tournament_table') 
-        self.tournament_table.update({'player': players_index}, where('name')== name)
-
+        self.tournament_table = self.db.table('tournament_table')
+        self.tournament_table.update({'player': players_index}, where('name') == name)
 
     @classmethod
     def get_tournament_list(self):
@@ -95,8 +90,8 @@ class Tournament(object):
             if(len(tournament['rounds']) < 4):
                 loading_tournament_list.append(tournament)
         return loading_tournament_list
-    @classmethod      
-    
+
+    @classmethod
     def get_id(self, tournament):
         self.db = TinyDB('Models/db.json')
         self.tournament_table = self.db.table('tournament_table')
@@ -111,4 +106,3 @@ class Tournament(object):
         self.query = Query()
         tournament = self.tournament_table.get(doc_id=int(tournament_id))
         return tournament['player']
-

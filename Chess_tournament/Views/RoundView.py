@@ -9,6 +9,4 @@ class RoundView(object):
         pass
 
     def show_round_number(self, round_number):
-        print(f"Round {round_number} : ")
-
-    
+        print(f"\n\n\nRound {round_number} : \n")

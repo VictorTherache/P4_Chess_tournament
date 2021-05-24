@@ -1,5 +1,5 @@
 from tinydb import TinyDB, Query
-import sys
+
 
 class RoundModel(object):
     """
@@ -10,9 +10,6 @@ class RoundModel(object):
         """
         Constructor of the class
         """
-        # self.db = TinyDB('../Models/db.json')
-        # self.first_round = self.db.table('first_round')
-        # self.query = Query()
         self.name = name
         self.starting_time = starting_time
         self.end_time = end_time
@@ -29,7 +26,7 @@ class RoundModel(object):
         """
         saves a list of players pairs in db
         """
-        rounds_list =[]
+        rounds_list = []
         self.db = TinyDB('Models/db.json')
         self.query = Query()
         self.tournament_table = self.db.table('tournament_table')

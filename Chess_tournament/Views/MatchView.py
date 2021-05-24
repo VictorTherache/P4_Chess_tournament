@@ -8,18 +8,13 @@ class MatchView(object):
         """
         pass
 
-    def show_match(self, player_1, player_2):
-        print('\n')
-        print(f"\n Match entre {player_1} "
-              f"et {player_2} ! ") 
-
     def update_score(self, match):
         print(f"Match entre {match[0][0]['first_name']} {match[0][0]['last_name']}"
               f" et {match[1][0]['first_name']} {match[1][0]['last_name']} \n")
-    
+
     def update_score_other_rounds(self, match):
         print(f"Match entre {match[0][0]['first_name']} {match[0][0]['last_name']}"
-              f" et {match[1][0]['first_name']} {match[1][0]['last_name']}\n")    
+              f" et {match[1][0]['first_name']} {match[1][0]['last_name']}\n")
 
     def invalide_score(self):
         print("Veuillez rentrer un score valide (1, 0.5 ou 0)\n")
@@ -29,6 +24,6 @@ class MatchView(object):
 
     def error_two_loosers(self):
         print("Erreur : Le joueur 2 doit avoir un score de 1 !\n")
-    
+
     def error_two_draw(self):
         print("Erreur : Le joueur 2 doit avoir un score de 0.5 !\n")

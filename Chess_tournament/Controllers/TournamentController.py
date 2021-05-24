@@ -3,12 +3,14 @@ from Controllers.RoundController import RoundController
 from Models.PlayerModel import Player
 from Models.TournamentModel import Tournament
 from Views.TournamentView import TournamentView
-import re
+from Views.PlayerView import PlayerView
 from tinydb import TinyDB, Query
 import sys
+from sys import platform
 import os
 import datetime
 import time
+from texttable import Texttable
 sys.path.append("..")
 
 
@@ -25,6 +27,7 @@ class TournamentController(object):
         self.tournament_view = TournamentView()
         self.round_controller = RoundController()
         self.player_controller = PlayerController()
+        self.player_views = PlayerView()
         self.db = TinyDB('Models/db.json')
         self.player_table = self.db.table('player_table')
         self.User = Query()
@@ -38,12 +41,11 @@ class TournamentController(object):
         """
         Initialize the tournament, add players to it
         """
-        os.system('cls')
+        self.clean_console()
         self.tournament_view.new_tournament()
-        player_table = Tournament.players_list()
         user_choice = self.menu_user_choice()
         if int(user_choice) == 1:
-            os.system('cls')
+            self.clean_console()
             self.add_tournament_info()
             self.create_save_new_tournament_instance()
             self.new_tournament()
@@ -53,64 +55,21 @@ class TournamentController(object):
             self.ask_which_report()
         if int(user_choice) == 4:
             self.update_player_rank()
-
-    def update_player_rank(self):
-        """
-        Update the player ranks
-        """
-        os.system('cls')
-        i=1
-        self.tournament_view.header_list_player()
-        for players in self.player_table:
-            self.tournament_view.show_players_list(players['first_name'], 
-                                                    players['last_name'],
-                                                    i)
-            i+=1
-        user_choice = input("\nSelectionnez un joueur :")
-        player_chosen = self.player_table.all()[int(user_choice) - 1]
-        self.tournament_view.display_player_rank(player_chosen)
-        updated_rank = input("Nouveau rang : ")
-        Player.update_player_rank(player_chosen.doc_id, int(updated_rank))
-        os.system('cls')
-        self.tournament_view.updated_player_success()
-        input("Appuyer sur entrée pour continuer")
-        self.start_program()
-
-    def new_tournament(self):
-        """
-        Ask the users to add players to the tournament
-        """
-        while len(self.tournament_players) != 8:
-            os.system('cls')
-            nbr_players_in_tournament = len(self.tournament_players)
-            self.tournament_view.add_player(nbr_players_in_tournament)
-            choice = input()
-            if int(choice) == 1:
-                self.choose_player_from_db(self.player_table)
-            if int(choice) == 2:
-                self.add_new_player_to_tournament_and_db()
-        self.update_player_in_db()
-        self.start_tournament()
-
-    def create_save_new_tournament_instance(self):
-        """
-        Create and save the tournament instance
-        """
-        self.tournament_instance = {
-            'name': self.tournament_info[0],
-            'place': self.tournament_info[1],
-            'date': self.tournament_info[2],
-            'rounds': "rounds",
-            'player': "players",
-            'time_control': self.tournament_info[3],
-            'description': self.tournament_info[4]
-        }
-        Tournament.save_tournament(self.tournament_instance)
+        if int(user_choice) == 5:
+            self.delete_player()
+        if int(user_choice) == 6:
+            self.add_new_player_to_tournament_and_db()
+            self.tournament_view.add_player_sucess()
+            input("Appuyer sur entrée pour continuer")
+            self.start_program()
+        if int(user_choice) == 7:
+            self.close_program()
 
     def add_tournament_info(self):
         """
         Ask the user information on the tournament
         """
+        self.tournament_view.new_tournament_header()
         self.tournament_view.ask_for_tournament_name()
         name = input()
         self.tournament_view.ask_for_place()
@@ -127,29 +86,74 @@ class TournamentController(object):
                                      time_control,
                                      description])
 
+    def create_save_new_tournament_instance(self):
+        """
+        Create and save the tournament instance
+        """
+        self.tournament_instance = {
+            'name': self.tournament_info[0],
+            'place': self.tournament_info[1],
+            'date': self.tournament_info[2],
+            'rounds': "rounds",
+            'player': "players",
+            'time_control': self.tournament_info[3],
+            'description': self.tournament_info[4]
+        }
+        Tournament.save_tournament(self.tournament_instance)
+
+    def new_tournament(self):
+        """
+        Ask the users to add players to the tournament
+        """
+        self.tournament_players = []
+        while len(self.tournament_players) != 8:
+            self.clean_console()
+            self.tournament_view.add_player_header()
+            nbr_players_in_tournament = len(self.tournament_players)
+            self.tournament_view.add_player(nbr_players_in_tournament)
+            choice = input()
+            if int(choice) == 1:
+                self.choose_player_from_db(self.player_table)
+            if int(choice) == 2:
+                self.add_new_player_to_tournament_and_db()
+        self.update_player_in_db()
+        self.start_tournament()
+
     def choose_loading_tournament(self):
         """
         Display the loading tournaments and ask users which one to choose
         """
-        os.system('cls')
+        self.clean_console()
         i = 0
-        user_choice=1
+        user_choice = 1
         tournament_load_list = Tournament.get_loading_tournaments()
-        if tournament_load_list:
-            self.tournament_view.display_loading_tournaments(
-                tournament_load_list[i])
-            while int(user_choice) != 4:
+        while int(user_choice) != 4:
+            t = Texttable()
+            texttable_list = []
+            headers = ["Nom du tournoi", "Lieu", "Date", "Contrôle du temps", "Description"]
+            if tournament_load_list:
+                texttable_list.append([tournament_load_list[i]['name'],
+                                       tournament_load_list[i]['place'],
+                                       tournament_load_list[i]['date'],
+                                       tournament_load_list[i]['time_control'],
+                                       tournament_load_list[i]['description']])
+                texttable_list.insert(0, headers)
+                t.add_rows(texttable_list)
+                self.tournament_view.display_loading_tournaments(t)
+                self.tournament_view.ask_user_loading_tournament_input()
                 user_choice = input()
-                os.system('cls')
-                self.tournament_view.display_loading_tournaments(
-                    tournament_load_list[i])
-                # user_choice = input()
+                self.clean_console()
                 if int(user_choice) == 2:
-                    if tournament_load_list[i] == tournament_load_list[-1]:
+                    if(len(tournament_load_list) == 0):
                         i -= 1
+                    else:
+                        if tournament_load_list[i] == tournament_load_list[-1]:
+                            i -= 1
                     i += 1
                 if int(user_choice) == 3:
                     i -= 1
+                    if len(tournament_load_list) == 0:
+                        i += 1
                     if tournament_load_list[i] == tournament_load_list[0]:
                         i += 1
                 if int(user_choice) == 1:
@@ -166,15 +170,90 @@ class TournamentController(object):
                         self.end_tournament(match_list)
                         self.update_players_rank(self.tournament_id)
                         self.start_program()
-        else:
-            os.system('cls')
-            self.tournament_view.no_loading_tournament()
-            input("Appuyer sur une entrée pour continuer")
-            self.start_program()
-
-                    # self.add_players_to_self(tournament_load_list[i])
-                    # self.start_tournament()
+            else:
+                self.clean_console()
+                self.tournament_view.no_loading_tournament()
+                input("Appuyer sur une entrée pour continuer")
+                self.start_program()
         self.start_program()
+
+    def user_choice(self):
+        self.tournament_view.user_choice()
+        choice = input()
+        if int(choice) == 1:
+            self.start_program()
+        if int(choice) == 2:
+            self.ask_which_report()
+        else:
+            self.tournament_view.wrong_answer()
+            self.user_choice()
+
+    def update_player_rank(self):
+        """
+        Update the player ranks
+        """
+        self.clean_console()
+        i = 1
+        t = Texttable()
+        texttable_list = []
+        headers = ["Id", "Prénom", "Nom", "Date de naissance",
+                   "Genre", "Rang"]
+        self.tournament_view.header_list_player()
+        for players in self.player_table:
+            texttable_list.append([i,
+                                   players['first_name'],
+                                   players['last_name'],
+                                   players['date_of_birth'],
+                                   players['gender'],
+                                   players['rank']
+                                   ])
+            i += 1
+        texttable_list.insert(0, headers)
+        t.add_rows(texttable_list)
+        self.tournament_view.show_players_list(t)
+        user_choice = input("\nSelectionnez un joueur :")
+        player_chosen = self.player_table.all()[int(user_choice) - 1]
+        self.tournament_view.display_player_rank(player_chosen)
+        updated_rank = input("Nouveau rang : ")
+        Player.update_player_rank(player_chosen.doc_id, int(updated_rank))
+        self.clean_console()
+        self.tournament_view.updated_player_success()
+        input("Appuyer sur entrée pour continuer")
+        self.start_program()
+
+    def delete_player(self):
+        """
+        Update the player ranks
+        """
+        self.clean_console()
+        i = 1
+        t = Texttable()
+        texttable_list = []
+        headers = ["Id", "Prénom", "Nom", "Date de naissance",
+                   "Genre", "Rang"]
+        self.tournament_view.header_list_player()
+        for players in self.player_table:
+            texttable_list.append([i,
+                                   players['first_name'],
+                                   players['last_name'],
+                                   players['date_of_birth'],
+                                   players['gender'],
+                                   players['rank']
+                                   ])
+            i += 1
+        texttable_list.insert(0, headers)
+        t.add_rows(texttable_list)
+        self.tournament_view.show_players_list(t)
+        user_choice = input("\nSelectionnez un joueur à supprimer:")
+        player_chosen = self.player_table.all()[int(user_choice) - 1]
+        Player.delete_player(player_chosen.doc_id)
+        self.clean_console()
+        self.tournament_view.delete_player_success()
+        input("Appuyer sur entrée pour continuer")
+        self.start_program()
+
+    def close_program(self):
+        sys.exit(0)
 
     def get_tournament_id(self, tournament):
         """
@@ -219,13 +298,24 @@ class TournamentController(object):
         the player to select
         """
         i = 1
-        os.system('cls')
+        self.clean_console()
         self.tournament_view.header_list_player()
+        t = Texttable()
+        texttable_list = []
+        headers = ["Id", "Prénom", "Nom", "Date de naissance",
+                   "Genre", "Rang"]
         for players in player_table:
-            self.tournament_view.show_players_list(players['first_name'],
-                                                    players['last_name'],
-                                                    str(i))
-            i+= 1
+            texttable_list.append([i,
+                                   players['first_name'],
+                                   players['last_name'],
+                                   players['date_of_birth'],
+                                   players['gender'],
+                                   players['rank']
+                                   ])
+            i += 1
+        texttable_list.insert(0, headers)
+        t.add_rows(texttable_list)
+        self.tournament_view.show_players_list(t)
         player_choice = input("\nQuel joueur voulez vous ajouter ? :")
         player_chosen = player_table.all()[int(player_choice) - 1]
         if player_chosen not in self.tournament_players:
@@ -238,6 +328,8 @@ class TournamentController(object):
         Checks if the player exist in db, if he
         doesn't exist, add it to tournament and db
         """
+        self.clean_console()
+        self.tournament_view.add_new_player()
         players_info = self.ask_user_input_for_new_player()
         if(self.validation_new_player(players_info)):
             transformed_names = self.capitalize_name(players_info[0],
@@ -261,7 +353,7 @@ class TournamentController(object):
         self.players_info = []
         first_name = input("Prénom du joueur :")
         last_name = input("Nom du joueur :")
-        age = input("Date de naissance du joueur :")
+        age = input("Date de naissance du joueur (dd/mm/yyyy) :")
         gender = input("Sexe du joueur (m/f) :")
         rank = input("Rang du joueur :")
         self.players_info.extend([first_name, last_name, age,
@@ -273,30 +365,30 @@ class TournamentController(object):
         Start the tournament, generates pairs for the rounds and display the final
         result
         """
-        os.system('cls')
+        self.clean_console()
         self.tournament_view.start_tournament()
-        tournament_id = self.get_tournament_id(self.tournament_info)
+        self.get_tournament_id(self.tournament_info)
         match_list = self.round_controller.generate_pairs_for_first_round(
             self.tournament_players,
             4, self.tournament_id)
         self.end_tournament(match_list)
         input("Appuyez sur entrée pour continuer")
-        os.system('cls')
+        self.clean_console()
         self.update_players_rank(self.tournament_id)
         self.start_program()
 
     def update_players_rank(self, tournament_id):
         """
-
+        At the end of a tournament asks the user to
+        update the players rank
         """
-        players_indexes  =self.get_players_index_from_db(tournament_id)
+        players_indexes = self.get_players_index_from_db(tournament_id)
         for player in players_indexes:
             player_chosen = self.player_table.all()[int(player) - 1]
             self.tournament_view.display_player_rank(player_chosen)
             updated_rank = input("Nouveau rang : ")
             Player.update_player_rank(player, int(updated_rank))
         self.start_program()
-
 
     def get_players_index_from_db(self, tournament_id):
         players_indexes = Tournament.get_players_index_from_db(tournament_id)
@@ -306,7 +398,23 @@ class TournamentController(object):
         """
         Display the tournament results
         """
-        self.tournament_view.show_tournament_result(match_list)
+        self.clean_console()
+        self.tournament_view.voice_les_resultats()
+        t = Texttable()
+        texttable_list = []
+        headers = ["Position", "Joueur"]
+        i = 1
+        for player in match_list:
+            if i == 1:
+                join_player = [player[0]["first_name"], player[0]["last_name"]]
+                texttable_list.append(["1 er", ' '.join(join_player)])
+            else:
+                join_player = [player[0]["first_name"], player[0]["last_name"]]
+                texttable_list.append([f"{str(i)} ème", ' '.join(join_player)])
+            i += 1
+        texttable_list.insert(0, headers)
+        t.add_rows(texttable_list)
+        self.tournament_view.tournament_result(t)
 
     def create_tournament_instance(self, rounds):
         tournament = Tournament("Tournoi Hiver",
@@ -320,29 +428,17 @@ class TournamentController(object):
         return tournament
 
     def get_players_index(self):
-        # self.tournament_players = [{'first_name': 'Laura', 'last_name': 'Stunie', 'date_of_birth': '12/12/1999', 'gender': 'f', 'rank': 1000}, {'first_name': 'Vicotr', 'last_name': 'Racheter', 'date_of_birth': '22/08/1993', 'gender': 'm', 'rank': 1300}, {'first_name': 'Emilie', 'last_name': 'Nalie', 'date_of_birth': '12/02/1983', 'gender': 'f', 'rank': 1400}, {'first_name': 'Lucas', 'last_name': 'Peter', 'date_of_birth': '12/04/1993', 'gender': 'm', 'rank': 1203}, {'first_name': 'Joshua', 'last_name': 'Romald', 'date_of_birth': '20/04/1991', 'gender': 'm', 'rank': 1302}, {'first_name': 'Pete', 'last_name': 'Donaldo', 'date_of_birth': '13/02/1979', 'gender': 'm', 'rank': 1753}, {'first_name': 'Ozil', 'last_name': 'Bzerut', 'date_of_birth': '12/05/1985', 'gender': 'm', 'rank': 1050}, {'first_name': 'Gerald', 'last_name': 'Languefoy', 'date_of_birth': '30/03/1983', 'gender': 'm', 'rank': 2000}]
         for players in self.tournament_players:
             player_index = self.player_table.get((self.User.first_name == players['first_name']) &
                                                  (self.User.last_name == players['last_name']))
             self.players_index.append(player_index.doc_id)
-
-    def user_choice(self):
-        self.tournament_view.user_choice()
-        choice = input()
-        if int(choice) == 1:
-            self.start_program()
-        if int(choice) == 2:
-            self.ask_which_report()
-        else:
-            self.tournament_view.wrong_answer()
-            self.user_choice()
 
     def get_tournament_list(self):
         tournament_list = Tournament.get_tournament_list()
         return tournament_list
 
     def ask_which_report(self):
-        os.system('cls')
+        self.clean_console()
         self.tournament_view.ask_which_report()
         choice = input()
         tournament_list = self.get_tournament_list()
@@ -350,35 +446,39 @@ class TournamentController(object):
         i = 0
         if int(choice) == 1:
             self.player_controller.ask_sort_player_by_what()
-            # input("Appuyer sur une touche pour continuer")
             self.ask_which_report()
         if int(choice) == 2:
-            user_choice = 0
-            while int(user_choice) != 5:
-                os.system('cls')
-                self.tournament_view.display_tournament_list(
-                    tournament_list[i])
-                self.tournament_view.user_choose_tournament_report()
-                user_choice = input()
-                if int(user_choice) == 1:
-                    self.report_tournament_players(tournament_list[i])
-                if int(user_choice) == 2:
-                    self.report_tournament_rounds(tournament_list[i]['rounds'])
-                if int(user_choice) == 3:
-                    if tournament_list[i] == tournament_list[-1]:
-                        i = 0
-                    i += 1
-                if int(user_choice) == 4:
-                    if tournament_list[i] == tournament_list[0]:
+            if tournament_list != []:
+                user_choice = 0
+                while int(user_choice) != 5:
+                    self.clean_console()
+                    self.tournament_view.display_tournament_list(
+                        tournament_list[i])
+                    self.tournament_view.user_choose_tournament_report()
+                    user_choice = input()
+                    if int(user_choice) == 1:
+                        self.report_tournament_players(tournament_list[i])
+                    if int(user_choice) == 2:
+                        self.report_tournament_rounds(tournament_list[i]['rounds'])
+                    if int(user_choice) == 3:
+                        if tournament_list[i] == tournament_list[-1]:
+                            i = 0
                         i += 1
-                    i -= 1
+                    if int(user_choice) == 4:
+                        if tournament_list[i] == tournament_list[0]:
+                            i += 1
+                        i -= 1
+                else:
+                    self.start_program()
             else:
+                self.tournament_view.no_tournament()
+                time.sleep(2)
                 self.start_program()
         if int(choice) == 3:
             self.start_program()
 
     def report_tournament_players(self, tournament):
-        os.system('cls')
+        self.clean_console()
         self.tournament_view.ask_sort_by_what()
         user_choice = input()
         if int(user_choice) == 1:
@@ -389,35 +489,81 @@ class TournamentController(object):
         input("Appuyer sur entrée pour continuer")
 
     def report_tournament_rounds(self, tournament_rounds):
-        os.system('cls')
+        self.clean_console()
+        t = Texttable()
+        texttable_list = []
+        headers = ["Round number",
+                   "Heure de début",
+                   "Heure de fin"]
         for rounds in tournament_rounds:
-            self.tournament_view.show_round(rounds)
+            texttable_list.append([rounds["name"],
+                                  rounds["start_time"],
+                                  rounds["end_time"]])
+        texttable_list.insert(0, headers)
+        t.add_rows(texttable_list)
+        self.tournament_view.show_round(t)
         self.tournament_view.ask_to_show_match(rounds)
         user_choice = input()
-        os.system('cls')
+        self.clean_console()
         if int(user_choice) != 2:
+            headers = ["Joueur 1", "Joueur 2", "Score 1", "Score 2"]
             for rounds in tournament_rounds:
                 self.tournament_view.display_round(rounds['name'])
+                t = Texttable()
+                texttable_list = []
                 for match in rounds['match_list']:
-                    self.tournament_view.display_match(match)
+                    name_player1 = [match[0][0]['first_name'],
+                                    match[0][0]['last_name']]
+                    name_player2 = [match[1][0]['first_name'],
+                                    match[1][0]['last_name']]
+                    texttable_list.append([' '.join(name_player1),
+                                           ' '.join(name_player2),
+                                           match[0][1],
+                                           match[1][1]
+                                           ])
+                texttable_list.insert(0, headers)
+                t.add_rows(texttable_list)
+                self.tournament_view.display_match(t)
         input("Appuyer sur entrée pour continuer")
 
     def get_tournament_players_ranking(self, tournament):
+        t = Texttable()
+        headers = ["Prénom", "Nom", "Date de naissance",
+                   "Genre", "Rang"]
+        texttable_list = []
         player_list = Player.player_list()
         sorted_list = sorted(
             player_list, key=lambda k: k['rank'], reverse=True)
-        os.system('cls')
+        self.clean_console()
         self.tournament_view.display_tournament_players_header()
         for player in sorted_list:
-            self.tournament_view.display_player(player)
+            texttable_list.append([player['first_name'],
+                                   player['last_name'],
+                                   player['date_of_birth'],
+                                   player['gender'],
+                                   player['rank']])
+        texttable_list.insert(0, headers)
+        t.add_rows(texttable_list)
+        self.player_views.show_list_players(t)
 
     def get_tournament_players_alphabetical(self, tournament):
         player_list = Player.player_list()
         sorted_list = sorted(player_list, key=lambda k: k['last_name'])
-        os.system('cls')
+        self.clean_console()
+        t = Texttable()
+        headers = ["Prénom", "Nom", "Date de naissance",
+                   "Genre", "Rang"]
+        texttable_list = []
         self.tournament_view.display_tournament_players_header()
         for player in sorted_list:
-            self.tournament_view.display_player(player)
+            texttable_list.append([player['first_name'],
+                                   player['last_name'],
+                                   player['date_of_birth'],
+                                   player['gender'],
+                                   player['rank']])
+        texttable_list.insert(0, headers)
+        t.add_rows(texttable_list)
+        self.player_views.show_list_players(t)
 
     def validation_new_player(self, new_player):
         if (self.validate_name(new_player[0]) and
@@ -454,10 +600,10 @@ class TournamentController(object):
             return True
 
     def validate_gender(self, gender):
-        if not((gender == "m") 
-            or (gender == "f")
-            or (gender == "M")
-            or (gender == "F") ):
+        if not((gender == "m")
+                or (gender == "f")
+                or (gender == "M")
+                or (gender == "F")):
             self.tournament_view.invalide_gender()
         else:
             return True
@@ -474,10 +620,13 @@ class TournamentController(object):
     def contains_special_cha(self, string):
         return any(not c.isalnum() for c in string)
 
+    def clean_console(self):
+        if(platform == 'linux'
+           or platform == 'linux2'
+           or platform == 'darwin'):
+            os.system('clear')
+        else:
+            os.system('cls')
+
 
 controller = TournamentController()
-# match_list = ([{'name': 'Round 1', 'start_time': '14/05/2021 11:31:32', 'end_time': '14/05/2021 11:31:35', 'match_list': [([{'first_name': 'Gerald', 'last_name': 'Languefoy', 'date_of_birth': '30/03/1983', 'gender': 'm', 'rank': 2000}, 1.0], [{'first_name': 'Vicotr', 'last_name': 'Racheter', 'date_of_birth': '22/08/1993', 'gender': 'm', 'rank': 1300}, 1.0]), ([{'first_name': 'Pete', 'last_name': 'Donaldo', 'date_of_birth': '13/02/1979', 'gender': 'm', 'rank': 1753}, 1.0], [{'first_name': 'Lucas', 'last_name': 'Peter', 'date_of_birth': '12/04/1993', 'gender': 'm', 'rank': 1203}, 1.0]), ([{'first_name': 'Emilie', 'last_name': 'Nalie', 'date_of_birth': '12/02/1983', 'gender': 'f', 'rank': 1400}, 1.0], [{'first_name': 'Ozil', 'last_name': 'Bzerut', 'date_of_birth': '12/05/1985', 'gender': 'm', 'rank': 1050}, 1.0]), ([{'first_name': 'Joshua', 'last_name': 'Romald', 'date_of_birth': '20/04/1991', 'gender': 'm', 'rank': 1302}, 1.0], [{'first_name': 'Laura', 'last_name': 'Stunie', 'date_of_birth': '12/12/1999', 'gender': 'f', 'rank': 1000}, 1.0])]}, {'name': 'Round 2', 'start_time': '14/05/2021 11:31:35', 'end_time': '14/05/2021 11:31:37', 'match_list': [([{'first_name': 'Gerald', 'last_name': 'Languefoy', 'date_of_birth': '30/03/1983', 'gender': 'm', 'rank': 2000}, 2.0], [{'first_name': 'Pete', 'last_name': 'Donaldo', 'date_of_birth': '13/02/1979', 'gender': 'm', 'rank': 1753}, 2.0]), ([{'first_name': 'Emilie', 'last_name': 'Nalie', 'date_of_birth': '12/02/1983', 'gender': 'f', 'rank': 1400}, 2.0], [{'first_name': 'Joshua', 'last_name': 'Romald', 'date_of_birth': '20/04/1991', 'gender': 'm', 'rank': 1302}, 1.0]), ([{'first_name': 'Vicotr', 'last_name': 'Racheter', 'date_of_birth': '22/08/1993', 'gender': 'm', 'rank': 1300}, 1.0], [{'first_name': 'Lucas', 'last_name': 'Peter', 'date_of_birth': '12/04/1993', 'gender': 'm', 'rank': 1203}, 1.0]), ([{'first_name': 'Ozil', 'last_name': 'Bzerut', 'date_of_birth': '12/05/1985', 'gender': 'm', 'rank': 1050}, 1.0], [{'first_name': 'Laura', 'last_name': 'Stunie', 'date_of_birth': '12/12/1999', 'gender': 'f', 'rank': 1000}, 2.0])]}, {'name': 'Round 3', 'start_time': '14/05/2021 11:31:37', 'end_time': '14/05/2021 11:31:39', 'match_list': [([{'first_name': 'Gerald', 'last_name': 'Languefoy', 'date_of_birth': '30/03/1983', 'gender': 'm', 'rank': 2000}, 2.0], [{'first_name': 'Emilie', 'last_name': 'Nalie', 'date_of_birth': '12/02/1983', 'gender': 'f', 'rank': 1400}, 2.0]), ([{'first_name': 'Pete', 'last_name': 'Donaldo', 'date_of_birth': '13/02/1979', 'gender': 'm', 'rank': 1753}, 2.0], [{'first_name': 'Laura', 'last_name': 'Stunie', 'date_of_birth': '12/12/1999', 'gender': 'f', 'rank': 1000}, 1.0]), ([{'first_name': 'Joshua', 'last_name': 'Romald', 'date_of_birth': '20/04/1991', 'gender': 'm', 'rank': 1302}, 1.0], [{'first_name': 'Vicotr', 'last_name': 'Racheter', 'date_of_birth': '22/08/1993', 'gender': 'm', 'rank': 1300}, 1.0]), ([{'first_name': 'Lucas', 'last_name': 'Peter', 'date_of_birth':
-# '12/04/1993', 'gender': 'm', 'rank': 1203}, 1.0], [{'first_name': 'Ozil', 'last_name': 'Bzerut', 'date_of_birth': '12/05/1985', 'gender': 'm', 'rank': 1050}, 1.0])]}, {'name': 'Round 4', 'start_time': '14/05/2021 11:31:39', 'end_time': '14/05/2021 11:31:42', 'match_list': [([{'first_name': 'Gerald', 'last_name': 'Languefoy', 'date_of_birth': '30/03/1983', 'gender': 'm', 'rank': 2000}, 2.0], [{'first_name': 'Laura', 'last_name': 'Stunie', 'date_of_birth': '12/12/1999', 'gender': 'f', 'rank': 1000}, 2.0]), ([{'first_name': 'Pete', 'last_name': 'Donaldo', 'date_of_birth': '13/02/1979', 'gender': 'm', 'rank': 1753}, 2.0], [{'first_name': 'Emilie', 'last_name': 'Nalie', 'date_of_birth': '12/02/1983', 'gender': 'f', 'rank': 1400}, 2.0]), ([{'first_name': 'Joshua', 'last_name': 'Romald', 'date_of_birth': '20/04/1991', 'gender': 'm', 'rank': 1302}, 1.0], [{'first_name': 'Lucas', 'last_name': 'Peter', 'date_of_birth': '12/04/1993', 'gender': 'm', 'rank': 1203}, 1.0]), ([{'first_name': 'Vicotr', 'last_name': 'Racheter', 'date_of_birth': '22/08/1993', 'gender': 'm', 'rank': 1300}, 1.0], [{'first_name': 'Ozil', 'last_name': 'Bzerut',
-# 'date_of_birth': '12/05/1985', 'gender': 'm', 'rank': 1050}, 1.0])]}], [[{'first_name': 'Pete', 'last_name': 'Donaldo', 'date_of_birth': '13/02/1979', 'gender': 'm', 'rank': 1753}, 1.0, 1.0, 1.0, 1.0], [{'first_name': 'Ozil', 'last_name': 'Bzerut', 'date_of_birth': '12/05/1985', 'gender': 'm', 'rank': 1050}, 1.0, 1.0, 0.0, 1.0], [{'first_name': 'Emilie', 'last_name': 'Nalie', 'date_of_birth': '12/02/1983', 'gender': 'f', 'rank': 1400}, 0.0, 1.0, 1.0, 0.0], [{'first_name': 'Vicotr', 'last_name': 'Racheter', 'date_of_birth': '22/08/1993', 'gender': 'm', 'rank': 1300}, 0.0, 0.0, 1.0, 1.0], [{'first_name': 'Lucas', 'last_name': 'Peter', 'date_of_birth': '12/04/1993', 'gender': 'm', 'rank': 1203}, 0.0, 0.0, 1.0, 1.0], [{'first_name': 'Gerald', 'last_name': 'Languefoy', 'date_of_birth': '30/03/1983', 'gender': 'm', 'rank': 2000}, 1.0, 0.0, 0.0, 0.0], [{'first_name': 'Joshua', 'last_name': 'Romald', 'date_of_birth': '20/04/1991', 'gender': 'm', 'rank': 1302}, 1.0, 0.0, 0.0, 0.0], [{'first_name': 'Laura', 'last_name': 'Stunie', 'date_of_birth': '12/12/1999', 'gender': 'f', 'rank': 1000}, 0.0, 1.0, 0.0, 0.0]])
-# controller.end_tournament(match_list)
-# # controller.validate_first_name("JEAN")
