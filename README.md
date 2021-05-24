@@ -42,7 +42,6 @@ Pour créer un rapport flake8, tapez la commande ci-dessous dans le dossier P4_c
 ```
 $ flake8 Chess_tournament --format=html --htmldir=flake-report --max-line-lengt=119
 ```
-***
 [Remarque] : flake8 va générer le warning suivant :  invalid escape sequence à cause du texte ASCII contenu dans le fichier Tournamentview.
 ***
 Merci d'avoir téléchargé ce projet :) 
