@@ -1,5 +1,8 @@
 from Views import MatchView
 import sys
+from sys import platform
+import os
+
 sys.path.append("..")
 
 
@@ -20,10 +23,10 @@ class MatchController(object):
         """
         self.match_views.update_score(match)
         score_p1 = input(f"Veuillez rentrer le score de "
-                         f"{match[0][0]['first_name']}"
+                         f"{match[0][0]['first_name']} "
                          f"{match[0][0]['last_name']} (1/0.5/0) ")
         score_p2 = input(f"Veuillez rentrer le score de "
-                         f"{match[1][0]['first_name']}"
+                         f"{match[1][0]['first_name']} "
                          f"{match[1][0]['last_name']} (1/0.5/0) ")
         self.validate_score(score_p1, score_p2, match, i)
         new_score = float(score_p1)
@@ -66,3 +69,11 @@ class MatchController(object):
             self.match_views.error_two_draw()
             input("Appuyer sur entrée pour continuer")
             self.update_score(match, i)
+
+    def clean_console(self):
+        if(platform == 'linux'
+           or platform == 'linux2'
+           or platform == 'darwin'):
+            os.system('clear')
+        else:
+            os.system('cls')

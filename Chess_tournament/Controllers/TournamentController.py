@@ -279,7 +279,7 @@ class TournamentController(object):
         t.add_rows(texttable_list)
         if len(self.tournament_table) == 0:
             input("\n\n\nAucun tournoi trouvé, appuyez sur"
-                         " entrée pour continuer")
+                  " entrée pour continuer")
             self.start_program()
         self.tournament_view.header_list_tournament()
         self.tournament_view.show_players_list(t)
@@ -290,8 +290,6 @@ class TournamentController(object):
         self.tournament_view.delete_tournament_success()
         input("Appuyer sur entrée pour continuer")
         self.start_program()
-
-
 
     def close_program(self):
         sys.exit(0)
@@ -501,10 +499,10 @@ class TournamentController(object):
                     headers = ["Nom du tournoi", "Lieu", "Date", "Contrôle du temps", "Description"]
                     if tournament_list:
                         texttable_list.append([tournament_list[i]['name'],
-                                            tournament_list[i]['place'],
-                                            tournament_list[i]['date'],
-                                            tournament_list[i]['time_control'],
-                                            tournament_list[i]['description']])
+                                               tournament_list[i]['place'],
+                                               tournament_list[i]['date'],
+                                               tournament_list[i]['time_control'],
+                                               tournament_list[i]['description']])
                         texttable_list.insert(0, headers)
                         t.add_rows(texttable_list)
                     self.tournament_view.display_loading_tournaments(t)
@@ -513,6 +511,8 @@ class TournamentController(object):
                     if int(user_choice) == 1:
                         self.report_tournament_players(tournament_list[i])
                     if int(user_choice) == 2:
+                        print(tournament_list[i])
+                        input()
                         self.report_tournament_rounds(tournament_list[i]['rounds'])
                     if int(user_choice) == 3:
                         if len(tournament_list) != 1:

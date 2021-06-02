@@ -115,7 +115,7 @@ class TournamentView(object):
 
     def user_choose_tournament_report(self):
         print(
-              "1 : Afficher les joueurs de ce tournoi\n"
+              "\n1 : Afficher les joueurs de ce tournoi\n"
               "2 : Afficher les rounds\n"
               "3 : Tournoi suivant\n"
               "4 : Tournoi précedent\n"
@@ -175,7 +175,7 @@ class TournamentView(object):
         print(f"- {player['first_name']} {player['last_name']} | classement : {player['rank']}")
 
     def display_player_rank(self, player):
-        
+
         print(f"\n\n\nRang actuel de {player['first_name']} {player['last_name']} :"
               f" {player['rank']}"
               )

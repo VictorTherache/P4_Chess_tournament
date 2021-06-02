@@ -21,6 +21,7 @@ class RoundController(object):
         super().__init__()
         self.match_controller = MatchController()
         self.round_view = RoundView()
+        self.score_index = 1
         self.first_half_list = []
         self.second_half_list = []
         self.round_1_match_list = []
@@ -85,15 +86,16 @@ class RoundController(object):
         Convert a list to tuple
         """
         self.tuple_match = []
-        score_index = 1
         round_index = 0
         match_index = 0
         for match in self.round_list[round_number - 1]:
             tuple = ()
-            tuple = tuple + ([match[0][0], match[0][score_index]], [match[1][0], match[1][score_index]])
+            tuple = tuple + ([match[0][0], match[0][self.score_index]], [match[1][0], match[1][self.score_index]])
+            print(tuple)
+            input()
             self.tuple_match.append(tuple)
             match_index += 1
-        score_index += 1
+        self.score_index += 1
         round_index += 1
 
     def save_to_db(self, serialized_round, tournament_id):

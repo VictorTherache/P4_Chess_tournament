@@ -287,484 +287,508 @@
                class="code sev- "><tt><i>43</i>               <span class="s2">&quot;4 : Mettre à jour le rang d&#39;un joueur</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l44"
-               class="code sev- "><tt><i>44</i>               <span class="s2">&quot;5 : Supprimer un joueur</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>44</i>               <span class="s2">&quot;5 : Ajouter un nouveau joueur</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l45"
-               class="code sev- "><tt><i>45</i>               <span class="s2">&quot;6 : Ajouter un nouveau joueur</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>45</i>               <span class="s2">&quot;6 : Supprimer un joueur</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l46"
-               class="code sev- "><tt><i>46</i>               <span class="s2">&quot;7 : Quitter le programme&quot;</span></tt>
+               class="code sev- "><tt><i>46</i>               <span class="s2">&quot;7 : Supprimer un tournoi</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l47"
-               class="code sev- "><tt><i>47</i>               <span class="p">)</span></tt>
+               class="code sev- "><tt><i>47</i>               <span class="s2">&quot;8 : Quitter le programme&quot;</span></tt>
             </div>
             <div id="l48"
-               class="code sev- "><tt><i>48</i> &nbsp;</tt>
+               class="code sev- "><tt><i>48</i>               <span class="p">)</span></tt>
             </div>
             <div id="l49"
-               class="code sev- "><tt><i>49</i>     <span class="k">def</span> <span class="nf">show_players_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>49</i> &nbsp;</tt>
             </div>
             <div id="l50"
-               class="code sev- "><tt><i>50</i>         <span class="sd">&quot;&quot;&quot;</span></tt>
+               class="code sev- "><tt><i>50</i>     <span class="k">def</span> <span class="nf">show_players_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
             </div>
             <div id="l51"
-               class="code sev- "><tt><i>51</i> <span class="sd">        Show each player in a single row</span></tt>
+               class="code sev- "><tt><i>51</i>         <span class="sd">&quot;&quot;&quot;</span></tt>
             </div>
             <div id="l52"
-               class="code sev- "><tt><i>52</i> <span class="sd">        &quot;&quot;&quot;</span></tt>
+               class="code sev- "><tt><i>52</i> <span class="sd">        Show each player in a single row</span></tt>
             </div>
             <div id="l53"
-               class="code sev- "><tt><i>53</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
+               class="code sev- "><tt><i>53</i> <span class="sd">        &quot;&quot;&quot;</span></tt>
             </div>
             <div id="l54"
-               class="code sev- "><tt><i>54</i> &nbsp;</tt>
+               class="code sev- "><tt><i>54</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
             </div>
             <div id="l55"
-               class="code sev- "><tt><i>55</i>     <span class="k">def</span> <span class="nf">header_list_player</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>55</i> &nbsp;</tt>
             </div>
             <div id="l56"
-               class="code sev- "><tt><i>56</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Liste des joueurs : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>56</i>     <span class="k">def</span> <span class="nf">header_list_player</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l57"
-               class="code sev- "><tt><i>57</i> &nbsp;</tt>
+               class="code sev- "><tt><i>57</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Liste des joueurs : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l58"
-               class="code sev- "><tt><i>58</i>     <span class="k">def</span> <span class="nf">player_already_added</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>58</i> &nbsp;</tt>
             </div>
             <div id="l59"
-               class="code sev- "><tt><i>59</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le joueur à déjà été ajouté au tournoi ! Veuillez réessayer&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>59</i>     <span class="k">def</span> <span class="nf">header_list_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l60"
-               class="code sev- "><tt><i>60</i> &nbsp;</tt>
+               class="code sev- "><tt><i>60</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Liste des tournois : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l61"
-               class="code sev- "><tt><i>61</i>     <span class="k">def</span> <span class="nf">player_already_exist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>61</i> &nbsp;</tt>
             </div>
             <div id="l62"
-               class="code sev- "><tt><i>62</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le joueur à déjà été ajouté à la base de donnée ! Veuillez réessayer&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>62</i>     <span class="k">def</span> <span class="nf">player_already_added</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l63"
-               class="code sev- "><tt><i>63</i> &nbsp;</tt>
+               class="code sev- "><tt><i>63</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le joueur à déjà été ajouté au tournoi ! Veuillez réessayer&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l64"
-               class="code sev- "><tt><i>64</i>     <span class="k">def</span> <span class="nf">voice_les_resultats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>64</i> &nbsp;</tt>
             </div>
             <div id="l65"
-               class="code sev- "><tt><i>65</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Tournoi terminé !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>65</i>     <span class="k">def</span> <span class="nf">player_already_exist</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l66"
-               class="code sev- "><tt><i>66</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Voici les résultats : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>66</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le joueur à déjà été ajouté à la base de donnée ! Veuillez réessayer&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l67"
                class="code sev- "><tt><i>67</i> &nbsp;</tt>
             </div>
             <div id="l68"
-               class="code sev- "><tt><i>68</i>     <span class="k">def</span> <span class="nf">tournament_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>68</i>     <span class="k">def</span> <span class="nf">voice_les_resultats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l69"
-               class="code sev- "><tt><i>69</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
+               class="code sev- "><tt><i>69</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Tournoi terminé !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l70"
-               class="code sev- "><tt><i>70</i> &nbsp;</tt>
+               class="code sev- "><tt><i>70</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Voici les résultats : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l71"
-               class="code sev- "><tt><i>71</i>     <span class="k">def</span> <span class="nf">first_of_the_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>71</i> &nbsp;</tt>
             </div>
             <div id="l72"
-               class="code sev- "><tt><i>72</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">er du tournoi : </span><span class="si">{</span><span class="n">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>72</i>     <span class="k">def</span> <span class="nf">tournament_result</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
             </div>
             <div id="l73"
-               class="code sev- "><tt><i>73</i> &nbsp;</tt>
+               class="code sev- "><tt><i>73</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
             </div>
             <div id="l74"
-               class="code sev- "><tt><i>74</i>     <span class="k">def</span> <span class="nf">other_places_of_the_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>74</i> &nbsp;</tt>
             </div>
             <div id="l75"
-               class="code sev- "><tt><i>75</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">ème du tournoi : </span><span class="si">{</span><span class="n">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>75</i>     <span class="k">def</span> <span class="nf">first_of_the_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span></tt>
             </div>
             <div id="l76"
-               class="code sev- "><tt><i>76</i> &nbsp;</tt>
+               class="code sev- "><tt><i>76</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">er du tournoi : </span><span class="si">{</span><span class="n">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l77"
-               class="code sev- "><tt><i>77</i>     <span class="k">def</span> <span class="nf">user_choice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>77</i> &nbsp;</tt>
             </div>
             <div id="l78"
-               class="code sev- "><tt><i>78</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">1 : Créer un nouveau tournoi&quot;</span></tt>
+               class="code sev- "><tt><i>78</i>     <span class="k">def</span> <span class="nf">other_places_of_the_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span></tt>
             </div>
             <div id="l79"
-               class="code sev- "><tt><i>79</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">2 : Afficher un rapport&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>79</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">ème du tournoi : </span><span class="si">{</span><span class="n">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l80"
                class="code sev- "><tt><i>80</i> &nbsp;</tt>
             </div>
             <div id="l81"
-               class="code sev- "><tt><i>81</i>     <span class="k">def</span> <span class="nf">wrong_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>81</i>     <span class="k">def</span> <span class="nf">user_choice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l82"
-               class="code sev- "><tt><i>82</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez taper un autre chiffre&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>82</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">1 : Créer un nouveau tournoi&quot;</span></tt>
             </div>
             <div id="l83"
-               class="code sev- "><tt><i>83</i> &nbsp;</tt>
+               class="code sev- "><tt><i>83</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">2 : Afficher un rapport&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l84"
-               class="code sev- "><tt><i>84</i>     <span class="k">def</span> <span class="nf">ask_which_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>84</i> &nbsp;</tt>
             </div>
             <div id="l85"
-               class="code sev- "><tt><i>85</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Quel rapport voulez-vous ? :</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>85</i>     <span class="k">def</span> <span class="nf">wrong_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l86"
-               class="code sev- "><tt><i>86</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 1 : Rapport sur les joueurs&quot;</span></tt>
+               class="code sev- "><tt><i>86</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez taper un autre chiffre&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l87"
-               class="code sev- "><tt><i>87</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 2 : Rapport sur les tournois&quot;</span></tt>
+               class="code sev- "><tt><i>87</i> &nbsp;</tt>
             </div>
             <div id="l88"
-               class="code sev- "><tt><i>88</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 3 : Revenir en arrière&quot;</span></tt>
+               class="code sev- "><tt><i>88</i>     <span class="k">def</span> <span class="nf">ask_which_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l89"
-               class="code sev- "><tt><i>89</i>               <span class="p">)</span></tt>
+               class="code sev- "><tt><i>89</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2"> Quel rapport voulez-vous ? :</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l90"
-               class="code sev- "><tt><i>90</i> &nbsp;</tt>
+               class="code sev- "><tt><i>90</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 1 : Rapport sur les joueurs&quot;</span></tt>
             </div>
             <div id="l91"
-               class="code sev- "><tt><i>91</i>     <span class="k">def</span> <span class="nf">invalide_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>91</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 2 : Rapport sur les tournois&quot;</span></tt>
             </div>
             <div id="l92"
-               class="code sev- "><tt><i>92</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez rentrer un nom et un prénom valide (sans numéros&quot;</span></tt>
+               class="code sev- "><tt><i>92</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 3 : Revenir en arrière&quot;</span></tt>
             </div>
             <div id="l93"
-               class="code sev- "><tt><i>93</i>               <span class="s2">&quot;ou caractères spéciaux)&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>93</i>               <span class="p">)</span></tt>
             </div>
             <div id="l94"
                class="code sev- "><tt><i>94</i> &nbsp;</tt>
             </div>
             <div id="l95"
-               class="code sev- "><tt><i>95</i>     <span class="k">def</span> <span class="nf">invalide_date_of_birth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>95</i>     <span class="k">def</span> <span class="nf">invalide_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l96"
-               class="code sev- "><tt><i>96</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez rentrer une date de naissance valide dd/mm/YYYY&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>96</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez rentrer un nom et un prénom valide (sans numéros&quot;</span></tt>
             </div>
             <div id="l97"
-               class="code sev- "><tt><i>97</i> &nbsp;</tt>
+               class="code sev- "><tt><i>97</i>               <span class="s2">&quot;ou caractères spéciaux)&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l98"
-               class="code sev- "><tt><i>98</i>     <span class="k">def</span> <span class="nf">invalide_gender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>98</i> &nbsp;</tt>
             </div>
             <div id="l99"
-               class="code sev- "><tt><i>99</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez rentrer un sexe valide (m/f)&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>99</i>     <span class="k">def</span> <span class="nf">invalide_date_of_birth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l100"
-               class="code sev- "><tt><i>100</i> &nbsp;</tt>
+               class="code sev- "><tt><i>100</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez rentrer une date de naissance valide dd/mm/YYYY&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l101"
-               class="code sev- "><tt><i>101</i>     <span class="k">def</span> <span class="nf">invalide_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>101</i> &nbsp;</tt>
             </div>
             <div id="l102"
-               class="code sev- "><tt><i>102</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez rentrer un rang valide&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>102</i>     <span class="k">def</span> <span class="nf">invalide_gender</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l103"
-               class="code sev- "><tt><i>103</i> &nbsp;</tt>
+               class="code sev- "><tt><i>103</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez rentrer un sexe valide (m/f)&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l104"
-               class="code sev- "><tt><i>104</i>     <span class="k">def</span> <span class="nf">display_tournament_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tournament</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>104</i> &nbsp;</tt>
             </div>
             <div id="l105"
-               class="code sev- "><tt><i>105</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nom du tournoi : </span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>105</i>     <span class="k">def</span> <span class="nf">invalide_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l106"
-               class="code sev- "><tt><i>106</i>               <span class="sa">f</span><span class="s2">&quot;Lieu : </span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>106</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Veuillez rentrer un rang valide&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l107"
-               class="code sev- "><tt><i>107</i>               <span class="sa">f</span><span class="s2">&quot;Date :</span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>107</i> &nbsp;</tt>
             </div>
             <div id="l108"
-               class="code sev- "><tt><i>108</i>               <span class="sa">f</span><span class="s2">&quot;Mode de jeu : </span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;time_control&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>108</i>     <span class="k">def</span> <span class="nf">display_tournament_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tournament</span><span class="p">):</span></tt>
             </div>
             <div id="l109"
-               class="code sev- "><tt><i>109</i>               <span class="sa">f</span><span class="s2">&quot;Description : </span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>109</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nom du tournoi : </span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l110"
-               class="code sev- "><tt><i>110</i>               <span class="p">)</span></tt>
+               class="code sev- "><tt><i>110</i>               <span class="sa">f</span><span class="s2">&quot;Lieu : </span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;place&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l111"
-               class="code sev- "><tt><i>111</i> &nbsp;</tt>
+               class="code sev- "><tt><i>111</i>               <span class="sa">f</span><span class="s2">&quot;Date :</span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l112"
-               class="code sev- "><tt><i>112</i>     <span class="k">def</span> <span class="nf">user_choose_tournament_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>112</i>               <span class="sa">f</span><span class="s2">&quot;Mode de jeu : </span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;time_control&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l113"
-               class="code sev- "><tt><i>113</i>         <span class="nb">print</span><span class="p">(</span></tt>
+               class="code sev- "><tt><i>113</i>               <span class="sa">f</span><span class="s2">&quot;Description : </span><span class="si">{</span><span class="n">tournament</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l114"
-               class="code sev- "><tt><i>114</i>               <span class="s2">&quot;1 : Afficher les joueurs de ce tournoi</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>114</i>               <span class="p">)</span></tt>
             </div>
             <div id="l115"
-               class="code sev- "><tt><i>115</i>               <span class="s2">&quot;2 : Afficher les rounds</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>115</i> &nbsp;</tt>
             </div>
             <div id="l116"
-               class="code sev- "><tt><i>116</i>               <span class="s2">&quot;3 : Tournoi suivant</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>116</i>     <span class="k">def</span> <span class="nf">user_choose_tournament_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l117"
-               class="code sev- "><tt><i>117</i>               <span class="s2">&quot;4 : Tournoi précedent</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>117</i>         <span class="nb">print</span><span class="p">(</span></tt>
             </div>
             <div id="l118"
-               class="code sev- "><tt><i>118</i>               <span class="s2">&quot;5 : Retour au menu</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>118</i>               <span class="s2">&quot;1 : Afficher les joueurs de ce tournoi</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l119"
-               class="code sev- "><tt><i>119</i>               <span class="p">)</span></tt>
+               class="code sev- "><tt><i>119</i>               <span class="s2">&quot;2 : Afficher les rounds</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l120"
-               class="code sev- "><tt><i>120</i> &nbsp;</tt>
+               class="code sev- "><tt><i>120</i>               <span class="s2">&quot;3 : Tournoi suivant</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l121"
-               class="code sev- "><tt><i>121</i>     <span class="k">def</span> <span class="nf">ask_sort_by_what</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>121</i>               <span class="s2">&quot;4 : Tournoi précedent</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l122"
-               class="code sev- "><tt><i>122</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">1 : Classer les joueurs par ordre alphabétique&quot;</span></tt>
+               class="code sev- "><tt><i>122</i>               <span class="s2">&quot;5 : Retour au menu</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l123"
-               class="code sev- "><tt><i>123</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">2 : Classer les joueurs par rang&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>123</i>               <span class="p">)</span></tt>
             </div>
             <div id="l124"
                class="code sev- "><tt><i>124</i> &nbsp;</tt>
             </div>
             <div id="l125"
-               class="code sev- "><tt><i>125</i>     <span class="k">def</span> <span class="nf">show_round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>125</i>     <span class="k">def</span> <span class="nf">ask_sort_by_what</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l126"
-               class="code sev- "><tt><i>126</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
+               class="code sev- "><tt><i>126</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">1 : Classer les joueurs par ordre alphabétique&quot;</span></tt>
             </div>
             <div id="l127"
-               class="code sev- "><tt><i>127</i> &nbsp;</tt>
+               class="code sev- "><tt><i>127</i>               <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">2 : Classer les joueurs par rang&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l128"
-               class="code sev- "><tt><i>128</i>     <span class="k">def</span> <span class="nf">ask_to_show_match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rounds</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>128</i> &nbsp;</tt>
             </div>
             <div id="l129"
-               class="code sev- "><tt><i>129</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 : Afficher les matchs de ce tournoi</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>129</i>     <span class="k">def</span> <span class="nf">show_round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
             </div>
             <div id="l130"
-               class="code sev- "><tt><i>130</i>               <span class="s2">&quot;2 : Revenir en arriere&quot;</span></tt>
+               class="code sev- "><tt><i>130</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
             </div>
             <div id="l131"
-               class="code sev- "><tt><i>131</i>               <span class="p">)</span></tt>
+               class="code sev- "><tt><i>131</i> &nbsp;</tt>
             </div>
             <div id="l132"
-               class="code sev- "><tt><i>132</i> &nbsp;</tt>
+               class="code sev- "><tt><i>132</i>     <span class="k">def</span> <span class="nf">ask_to_show_match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rounds</span><span class="p">):</span></tt>
             </div>
             <div id="l133"
-               class="code sev- "><tt><i>133</i>     <span class="k">def</span> <span class="nf">display_round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">round_name</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>133</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 : Afficher les matchs de ce tournoi</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l134"
-               class="code sev- "><tt><i>134</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">round_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>134</i>               <span class="s2">&quot;2 : Revenir en arriere&quot;</span></tt>
             </div>
             <div id="l135"
-               class="code sev- "><tt><i>135</i> &nbsp;</tt>
+               class="code sev- "><tt><i>135</i>               <span class="p">)</span></tt>
             </div>
             <div id="l136"
-               class="code sev- "><tt><i>136</i>     <span class="k">def</span> <span class="nf">display_match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>136</i> &nbsp;</tt>
             </div>
             <div id="l137"
-               class="code sev- "><tt><i>137</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
+               class="code sev- "><tt><i>137</i>     <span class="k">def</span> <span class="nf">display_round</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">round_name</span><span class="p">):</span></tt>
             </div>
             <div id="l138"
-               class="code sev- "><tt><i>138</i> &nbsp;</tt>
+               class="code sev- "><tt><i>138</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">round_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l139"
-               class="code sev- "><tt><i>139</i>     <span class="k">def</span> <span class="nf">display_loading_tournaments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>139</i> &nbsp;</tt>
             </div>
             <div id="l140"
-               class="code sev- "><tt><i>140</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
+               class="code sev- "><tt><i>140</i>     <span class="k">def</span> <span class="nf">display_match</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
             </div>
             <div id="l141"
-               class="code sev- "><tt><i>141</i> &nbsp;</tt>
+               class="code sev- "><tt><i>141</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
             </div>
             <div id="l142"
-               class="code sev- "><tt><i>142</i>     <span class="k">def</span> <span class="nf">ask_user_loading_tournament_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>142</i> &nbsp;</tt>
             </div>
             <div id="l143"
-               class="code sev- "><tt><i>143</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">1 : Reprendre ce tournoi</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>143</i>     <span class="k">def</span> <span class="nf">display_loading_tournaments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texttable</span><span class="p">):</span></tt>
             </div>
             <div id="l144"
-               class="code sev- "><tt><i>144</i>               <span class="s2">&quot;2 : Tournoi suivant</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>144</i>         <span class="nb">print</span><span class="p">(</span><span class="n">texttable</span><span class="o">.</span><span class="n">draw</span><span class="p">())</span></tt>
             </div>
             <div id="l145"
-               class="code sev- "><tt><i>145</i>               <span class="s2">&quot;3 : Tournoi précèdent</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>145</i> &nbsp;</tt>
             </div>
             <div id="l146"
-               class="code sev- "><tt><i>146</i>               <span class="s2">&quot;4 : Retour au menu</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>146</i>     <span class="k">def</span> <span class="nf">ask_user_loading_tournament_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l147"
-               class="code sev- "><tt><i>147</i>               <span class="p">)</span></tt>
+               class="code sev- "><tt><i>147</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">1 : Reprendre ce tournoi</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l148"
-               class="code sev- "><tt><i>148</i> &nbsp;</tt>
+               class="code sev- "><tt><i>148</i>               <span class="s2">&quot;2 : Tournoi suivant</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l149"
-               class="code sev- "><tt><i>149</i>     <span class="k">def</span> <span class="nf">new_tournament_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>149</i>               <span class="s2">&quot;3 : Tournoi précèdent</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l150"
-               class="code sev- "><tt><i>150</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Création du nouveau tournoi</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>150</i>               <span class="s2">&quot;4 : Retour au menu</span><span class="se">\n</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l151"
-               class="code sev- "><tt><i>151</i> &nbsp;</tt>
+               class="code sev- "><tt><i>151</i>               <span class="p">)</span></tt>
             </div>
             <div id="l152"
-               class="code sev- "><tt><i>152</i>     <span class="k">def</span> <span class="nf">ask_for_tournament_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>152</i> &nbsp;</tt>
             </div>
             <div id="l153"
-               class="code sev- "><tt><i>153</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nom du tournoi : &quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>153</i>     <span class="k">def</span> <span class="nf">new_tournament_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l154"
-               class="code sev- "><tt><i>154</i> &nbsp;</tt>
+               class="code sev- "><tt><i>154</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Création du nouveau tournoi</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l155"
-               class="code sev- "><tt><i>155</i>     <span class="k">def</span> <span class="nf">ask_for_place</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>155</i> &nbsp;</tt>
             </div>
             <div id="l156"
-               class="code sev- "><tt><i>156</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lieu : &quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>156</i>     <span class="k">def</span> <span class="nf">ask_for_tournament_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l157"
-               class="code sev- "><tt><i>157</i> &nbsp;</tt>
+               class="code sev- "><tt><i>157</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nom du tournoi : &quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l158"
-               class="code sev- "><tt><i>158</i>     <span class="k">def</span> <span class="nf">ask_for_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>158</i> &nbsp;</tt>
             </div>
             <div id="l159"
-               class="code sev- "><tt><i>159</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Date : &quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>159</i>     <span class="k">def</span> <span class="nf">ask_for_place</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l160"
-               class="code sev- "><tt><i>160</i> &nbsp;</tt>
+               class="code sev- "><tt><i>160</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lieu : &quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l161"
-               class="code sev- "><tt><i>161</i>     <span class="k">def</span> <span class="nf">ask_for_time_control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>161</i> &nbsp;</tt>
             </div>
             <div id="l162"
-               class="code sev- "><tt><i>162</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blitz, Bullet ou coup rapide :&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>162</i>     <span class="k">def</span> <span class="nf">ask_for_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l163"
-               class="code sev- "><tt><i>163</i> &nbsp;</tt>
+               class="code sev- "><tt><i>163</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Date : &quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l164"
-               class="code sev- "><tt><i>164</i>     <span class="k">def</span> <span class="nf">ask_for_description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>164</i> &nbsp;</tt>
             </div>
             <div id="l165"
-               class="code sev- "><tt><i>165</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Description : &quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>165</i>     <span class="k">def</span> <span class="nf">ask_for_time_control</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l166"
-               class="code sev- "><tt><i>166</i> &nbsp;</tt>
+               class="code sev- "><tt><i>166</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blitz, Bullet ou coup rapide :&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l167"
-               class="code sev- "><tt><i>167</i>     <span class="k">def</span> <span class="nf">display_tournament_players_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>167</i> &nbsp;</tt>
             </div>
             <div id="l168"
-               class="code sev- "><tt><i>168</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Liste des joueurs ayant participé au tournoi :</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>168</i>     <span class="k">def</span> <span class="nf">ask_for_description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l169"
-               class="code sev- "><tt><i>169</i> &nbsp;</tt>
+               class="code sev- "><tt><i>169</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Description : &quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l170"
-               class="code sev- "><tt><i>170</i>     <span class="k">def</span> <span class="nf">display_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>170</i> &nbsp;</tt>
             </div>
             <div id="l171"
-               class="code sev- "><tt><i>171</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | classement : </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>171</i>     <span class="k">def</span> <span class="nf">display_tournament_players_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l172"
-               class="code sev- "><tt><i>172</i> &nbsp;</tt>
+               class="code sev- "><tt><i>172</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Liste des joueurs ayant participé au tournoi :</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l173"
-               class="code sev- "><tt><i>173</i>     <span class="k">def</span> <span class="nf">display_player_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>173</i> &nbsp;</tt>
             </div>
             <div id="l174"
-               class="code sev- "><tt><i>174</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rang actuel de </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> :&quot;</span></tt>
+               class="code sev- "><tt><i>174</i>     <span class="k">def</span> <span class="nf">display_player</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span></tt>
             </div>
             <div id="l175"
-               class="code sev- "><tt><i>175</i>               <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span></tt>
+               class="code sev- "><tt><i>175</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | classement : </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l176"
-               class="code sev- "><tt><i>176</i>               <span class="p">)</span></tt>
+               class="code sev- "><tt><i>176</i> &nbsp;</tt>
             </div>
             <div id="l177"
-               class="code sev- "><tt><i>177</i> &nbsp;</tt>
+               class="code sev- "><tt><i>177</i>     <span class="k">def</span> <span class="nf">display_player_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span></tt>
             </div>
             <div id="l178"
-               class="code sev- "><tt><i>178</i>     <span class="k">def</span> <span class="nf">no_loading_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>178</i> &nbsp;</tt>
             </div>
             <div id="l179"
-               class="code sev- "><tt><i>179</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aucun tournoi en cours&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>179</i>         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Rang actuel de </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> :&quot;</span></tt>
             </div>
             <div id="l180"
-               class="code sev- "><tt><i>180</i> &nbsp;</tt>
+               class="code sev- "><tt><i>180</i>               <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">player</span><span class="p">[</span><span class="s1">&#39;rank&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span></tt>
             </div>
             <div id="l181"
-               class="code sev- "><tt><i>181</i>     <span class="k">def</span> <span class="nf">jump_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>181</i>               <span class="p">)</span></tt>
             </div>
             <div id="l182"
-               class="code sev- "><tt><i>182</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>182</i> &nbsp;</tt>
             </div>
             <div id="l183"
-               class="code sev- "><tt><i>183</i> &nbsp;</tt>
+               class="code sev- "><tt><i>183</i>     <span class="k">def</span> <span class="nf">no_loading_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l184"
-               class="code sev- "><tt><i>184</i>     <span class="k">def</span> <span class="nf">add_player_sucess</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>184</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Aucun tournoi en cours&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l185"
-               class="code sev- "><tt><i>185</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Le joueur à bien été ajouté !&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>185</i> &nbsp;</tt>
             </div>
             <div id="l186"
-               class="code sev- "><tt><i>186</i> &nbsp;</tt>
+               class="code sev- "><tt><i>186</i>     <span class="k">def</span> <span class="nf">jump_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l187"
-               class="code sev- "><tt><i>187</i>     <span class="k">def</span> <span class="nf">delete_player_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>187</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l188"
-               class="code sev- "><tt><i>188</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Le joueur à bien été supprimé ! &quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>188</i> &nbsp;</tt>
             </div>
             <div id="l189"
-               class="code sev- "><tt><i>189</i> &nbsp;</tt>
+               class="code sev- "><tt><i>189</i>     <span class="k">def</span> <span class="nf">add_player_sucess</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l190"
-               class="code sev- "><tt><i>190</i>     <span class="k">def</span> <span class="nf">updated_player_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>190</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Le joueur à bien été ajouté !&quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l191"
-               class="code sev- "><tt><i>191</i>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">Le joueur à bien été mis à jour !&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>191</i> &nbsp;</tt>
             </div>
             <div id="l192"
-               class="code sev- "><tt><i>192</i> &nbsp;</tt>
+               class="code sev- "><tt><i>192</i>     <span class="k">def</span> <span class="nf">delete_player_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l193"
-               class="code sev- "><tt><i>193</i>     <span class="k">def</span> <span class="nf">start_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>193</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Le joueur à bien été supprimé ! &quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l194"
-               class="code sev- "><tt><i>194</i>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Début du tournoi</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>194</i> &nbsp;</tt>
             </div>
             <div id="l195"
-               class="code sev- "><tt><i>195</i> &nbsp;</tt>
+               class="code sev- "><tt><i>195</i>     <span class="k">def</span> <span class="nf">delete_tournament_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l196"
-               class="code sev- "><tt><i>196</i>     <span class="k">def</span> <span class="nf">no_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>196</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Le tournoi à bien été supprimé ! &quot;</span><span class="p">)</span></tt>
             </div>
             <div id="l197"
-               class="code sev- "><tt><i>197</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aucun tournois sauvegardés&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>197</i> &nbsp;</tt>
             </div>
             <div id="l198"
-               class="code sev- "><tt><i>198</i> &nbsp;</tt>
+               class="code sev- "><tt><i>198</i>     <span class="k">def</span> <span class="nf">updated_player_success</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l199"
-               class="code sev- "><tt><i>199</i>     <span class="k">def</span> <span class="nf">add_player_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>199</i>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n\n</span><span class="s1">Le joueur à bien été mis à jour !&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l200"
-               class="code sev- "><tt><i>200</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Ajout des joueurs au tournoi</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>200</i> &nbsp;</tt>
             </div>
             <div id="l201"
-               class="code sev- "><tt><i>201</i> &nbsp;</tt>
+               class="code sev- "><tt><i>201</i>     <span class="k">def</span> <span class="nf">start_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
             </div>
             <div id="l202"
-               class="code sev- "><tt><i>202</i>     <span class="k">def</span> <span class="nf">add_new_player</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+               class="code sev- "><tt><i>202</i>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Début du tournoi</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></tt>
             </div>
             <div id="l203"
-               class="code sev- "><tt><i>203</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Ajouter un nouveau joueur&quot;</span><span class="p">)</span></tt>
+               class="code sev- "><tt><i>203</i> &nbsp;</tt>
+            </div>
+            <div id="l204"
+               class="code sev- "><tt><i>204</i>     <span class="k">def</span> <span class="nf">no_tournament</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+            </div>
+            <div id="l205"
+               class="code sev- "><tt><i>205</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aucun tournois sauvegardés&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l206"
+               class="code sev- "><tt><i>206</i> &nbsp;</tt>
+            </div>
+            <div id="l207"
+               class="code sev- "><tt><i>207</i>     <span class="k">def</span> <span class="nf">add_player_header</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+            </div>
+            <div id="l208"
+               class="code sev- "><tt><i>208</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Ajout des joueurs au tournoi</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></tt>
+            </div>
+            <div id="l209"
+               class="code sev- "><tt><i>209</i> &nbsp;</tt>
+            </div>
+            <div id="l210"
+               class="code sev- "><tt><i>210</i>     <span class="k">def</span> <span class="nf">add_new_player</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></tt>
+            </div>
+            <div id="l211"
+               class="code sev- "><tt><i>211</i>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Ajouter un nouveau joueur&quot;</span><span class="p">)</span></tt>
             </div>
             
          </div>
