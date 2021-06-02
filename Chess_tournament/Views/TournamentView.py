@@ -41,9 +41,10 @@ class TournamentView(object):
               "2 : Charger un tournoi\n"
               "3 : Afficher un rapport\n"
               "4 : Mettre à jour le rang d'un joueur\n"
-              "5 : Supprimer un joueur\n"
-              "6 : Ajouter un nouveau joueur\n"
-              "7 : Quitter le programme"
+              "5 : Ajouter un nouveau joueur\n"
+              "6 : Supprimer un joueur\n"
+              "7 : Supprimer un tournoi\n"
+              "8 : Quitter le programme"
               )
 
     def show_players_list(self, texttable):
@@ -54,6 +55,9 @@ class TournamentView(object):
 
     def header_list_player(self):
         print("\n\n\nListe des joueurs : \n")
+
+    def header_list_tournament(self):
+        print("\n\n\nListe des tournois : \n")
 
     def player_already_added(self):
         print("Le joueur à déjà été ajouté au tournoi ! Veuillez réessayer")
@@ -82,7 +86,7 @@ class TournamentView(object):
         print("\nVeuillez taper un autre chiffre")
 
     def ask_which_report(self):
-        print("\n Quel rapport voulez-vous ? :\n"
+        print("\n\n\n Quel rapport voulez-vous ? :\n"
               "\n 1 : Rapport sur les joueurs"
               "\n 2 : Rapport sur les tournois"
               "\n 3 : Revenir en arrière"
@@ -119,7 +123,7 @@ class TournamentView(object):
               )
 
     def ask_sort_by_what(self):
-        print("\n1 : Classer les joueurs par ordre alphabétique"
+        print("\n\n\n1 : Classer les joueurs par ordre alphabétique"
               "\n2 : Classer les joueurs par rang")
 
     def show_round(self, texttable):
@@ -171,12 +175,13 @@ class TournamentView(object):
         print(f"- {player['first_name']} {player['last_name']} | classement : {player['rank']}")
 
     def display_player_rank(self, player):
-        print(f"Rang actuel de {player['first_name']} {player['last_name']} :"
+        
+        print(f"\n\n\nRang actuel de {player['first_name']} {player['last_name']} :"
               f" {player['rank']}"
               )
 
     def no_loading_tournament(self):
-        print("Aucun tournoi en cours")
+        print("\n\n\nAucun tournoi en cours")
 
     def jump_line(self):
         print("\n")
@@ -186,6 +191,9 @@ class TournamentView(object):
 
     def delete_player_success(self):
         print("\n\n\nLe joueur à bien été supprimé ! ")
+
+    def delete_tournament_success(self):
+        print("\n\n\nLe tournoi à bien été supprimé ! ")
 
     def updated_player_success(self):
         print('\n\n\nLe joueur à bien été mis à jour !')

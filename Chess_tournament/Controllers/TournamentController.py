@@ -30,6 +30,7 @@ class TournamentController(object):
         self.player_views = PlayerView()
         self.db = TinyDB('Models/db.json')
         self.player_table = self.db.table('player_table')
+        self.tournament_table = self.db.table('tournament_table')
         self.User = Query()
         self.tournament_players = []
         self.players_index = []
@@ -56,13 +57,15 @@ class TournamentController(object):
         if int(user_choice) == 4:
             self.update_player_rank()
         if int(user_choice) == 5:
-            self.delete_player()
-        if int(user_choice) == 6:
             self.add_new_player_to_tournament_and_db()
             self.tournament_view.add_player_sucess()
             input("Appuyer sur entrée pour continuer")
             self.start_program()
+        if int(user_choice) == 6:
+            self.delete_player()
         if int(user_choice) == 7:
+            self.delete_tournament()
+        if int(user_choice) == 8:
             self.close_program()
 
     def add_tournament_info(self):
@@ -106,6 +109,7 @@ class TournamentController(object):
         Ask the users to add players to the tournament
         """
         self.tournament_players = []
+        self.players_index = []
         while len(self.tournament_players) != 8:
             self.clean_console()
             self.tournament_view.add_player_header()
@@ -223,7 +227,7 @@ class TournamentController(object):
 
     def delete_player(self):
         """
-        Update the player ranks
+        Delete the selected player
         """
         self.clean_console()
         i = 1
@@ -251,6 +255,43 @@ class TournamentController(object):
         self.tournament_view.delete_player_success()
         input("Appuyer sur entrée pour continuer")
         self.start_program()
+
+    def delete_tournament(self):
+        """
+        Delete the selected tournament
+        """
+        self.clean_console()
+        i = 1
+        t = Texttable()
+        texttable_list = []
+        headers = ["Id", "Nom", "Lieu", "Date",
+                   "Time control", "Description"]
+        for tournament in self.tournament_table:
+            texttable_list.append([i,
+                                   tournament['name'],
+                                   tournament['place'],
+                                   tournament['date'],
+                                   tournament['time_control'],
+                                   tournament['description']
+                                   ])
+            i += 1
+        texttable_list.insert(0, headers)
+        t.add_rows(texttable_list)
+        if len(self.tournament_table) == 0:
+            input("\n\n\nAucun tournoi trouvé, appuyez sur"
+                         " entrée pour continuer")
+            self.start_program()
+        self.tournament_view.header_list_tournament()
+        self.tournament_view.show_players_list(t)
+        user_choice = input("\nSelectionnez un tournoi à supprimer:")
+        tournament_chosen = self.tournament_table.all()[int(user_choice) - 1]
+        Tournament.delete_tournament(tournament_chosen.doc_id)
+        self.clean_console()
+        self.tournament_view.delete_tournament_success()
+        input("Appuyer sur entrée pour continuer")
+        self.start_program()
+
+
 
     def close_program(self):
         sys.exit(0)
@@ -383,11 +424,14 @@ class TournamentController(object):
         update the players rank
         """
         players_indexes = self.get_players_index_from_db(tournament_id)
-        for player in players_indexes:
-            player_chosen = self.player_table.all()[int(player) - 1]
-            self.tournament_view.display_player_rank(player_chosen)
+        players_list = Player.get_players_by_index(players_indexes)
+        i = 0
+        for player in players_list:
+            self.clean_console()
+            self.tournament_view.display_player_rank(player)
             updated_rank = input("Nouveau rang : ")
-            Player.update_player_rank(player, int(updated_rank))
+            Player.update_player_rank(players_indexes[i], int(updated_rank))
+            i += 1
         self.start_program()
 
     def get_players_index_from_db(self, tournament_id):
@@ -452,8 +496,18 @@ class TournamentController(object):
                 user_choice = 0
                 while int(user_choice) != 5:
                     self.clean_console()
-                    self.tournament_view.display_tournament_list(
-                        tournament_list[i])
+                    t = Texttable()
+                    texttable_list = []
+                    headers = ["Nom du tournoi", "Lieu", "Date", "Contrôle du temps", "Description"]
+                    if tournament_list:
+                        texttable_list.append([tournament_list[i]['name'],
+                                            tournament_list[i]['place'],
+                                            tournament_list[i]['date'],
+                                            tournament_list[i]['time_control'],
+                                            tournament_list[i]['description']])
+                        texttable_list.insert(0, headers)
+                        t.add_rows(texttable_list)
+                    self.tournament_view.display_loading_tournaments(t)
                     self.tournament_view.user_choose_tournament_report()
                     user_choice = input()
                     if int(user_choice) == 1:
@@ -461,13 +515,15 @@ class TournamentController(object):
                     if int(user_choice) == 2:
                         self.report_tournament_rounds(tournament_list[i]['rounds'])
                     if int(user_choice) == 3:
-                        if tournament_list[i] == tournament_list[-1]:
-                            i = 0
-                        i += 1
-                    if int(user_choice) == 4:
-                        if tournament_list[i] == tournament_list[0]:
+                        if len(tournament_list) != 1:
+                            if tournament_list[i] == tournament_list[-1]:
+                                i = 0
                             i += 1
-                        i -= 1
+                    if int(user_choice) == 4:
+                        if len(tournament_list) != 1:
+                            if tournament_list[i] == tournament_list[0]:
+                                i += 1
+                            i -= 1
                 else:
                     self.start_program()
             else:
@@ -527,11 +583,11 @@ class TournamentController(object):
         input("Appuyer sur entrée pour continuer")
 
     def get_tournament_players_ranking(self, tournament):
+        player_list = Player.get_players_by_index(tournament['player'])
         t = Texttable()
         headers = ["Prénom", "Nom", "Date de naissance",
                    "Genre", "Rang"]
         texttable_list = []
-        player_list = Player.player_list()
         sorted_list = sorted(
             player_list, key=lambda k: k['rank'], reverse=True)
         self.clean_console()
@@ -547,7 +603,7 @@ class TournamentController(object):
         self.player_views.show_list_players(t)
 
     def get_tournament_players_alphabetical(self, tournament):
-        player_list = Player.player_list()
+        player_list = Player.get_players_by_index(tournament['player'])
         sorted_list = sorted(player_list, key=lambda k: k['last_name'])
         self.clean_console()
         t = Texttable()

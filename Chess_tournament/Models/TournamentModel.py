@@ -106,3 +106,10 @@ class Tournament(object):
         self.query = Query()
         tournament = self.tournament_table.get(doc_id=int(tournament_id))
         return tournament['player']
+
+    @classmethod
+    def delete_tournament(self, tournament_id):
+        self.db = TinyDB('Models/db.json')
+        self.tournament_table = self.db.table('tournament_table')
+        self.query = Query()
+        self.tournament_table.remove(doc_ids=[tournament_id])

@@ -32,13 +32,14 @@ class PlayerController(object):
                 player_table.all()[int(player_choice) - 1])
         else:
             self.player_views.player_already_added()
+            input("Appuyez sur entrée pour continuer")
 
     def ask_sort_player_by_what(self):
         """
         Asks the user how to sort the players
         """
         self.clean_console()
-        choice = input("\n1 : Classer les joueurs par ordre alphabétique"
+        choice = input("\n\n\n1 : Classer les joueurs par ordre alphabétique"
                        "\n2 : Classer les joueurs par rang")
         self.clean_console()
         if int(choice) == 1:

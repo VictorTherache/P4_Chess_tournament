@@ -161,7 +161,7 @@ class RoundController(object):
         for players in updated_players_list:
             while len(players) != 5:
                 players.append(0)
-        self.updated_joined_list = updated_players_list
+        self.updated_joined_list = updated_players_list[-8:]
         self.round_number = len(tournament['rounds'])
         ranking = self.generate_matches_other_rounds()
         return ranking
