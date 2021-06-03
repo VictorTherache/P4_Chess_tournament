@@ -91,8 +91,6 @@ class RoundController(object):
         for match in self.round_list[round_number - 1]:
             tuple = ()
             tuple = tuple + ([match[0][0], match[0][self.score_index]], [match[1][0], match[1][self.score_index]])
-            print(tuple)
-            input()
             self.tuple_match.append(tuple)
             match_index += 1
         self.score_index += 1

@@ -511,8 +511,6 @@ class TournamentController(object):
                     if int(user_choice) == 1:
                         self.report_tournament_players(tournament_list[i])
                     if int(user_choice) == 2:
-                        print(tournament_list[i])
-                        input()
                         self.report_tournament_rounds(tournament_list[i]['rounds'])
                     if int(user_choice) == 3:
                         if len(tournament_list) != 1:
